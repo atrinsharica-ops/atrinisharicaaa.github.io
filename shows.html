@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tv shows — rins comfort zone</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --bg-pink: #fff2f7;
+      --card-bg: #fffafc;
+      --accent-pink: #f49ac1;
+      --soft-pink: #ffd6e7;
+      --text-color: #7d4e63;
+      --border-pink: #ffc2dc;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: 'Fredoka', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-pink);
+      background-image: radial-gradient(#ffd6e7 1.5px, transparent 1.5px), radial-gradient(#ffd6e7 1.5px, #fff2f7 1.5px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .floating-sparkle {
+      position: fixed;
+      font-size: 24px;
+      color: #f49ac1;
+      pointer-events: none;
+      z-index: 999;
+      animation: floatAround 16s ease-in-out infinite;
+    }
+
+    @keyframes floatAround {
+      0%   { top: 10%; left: 8%; transform: rotate(0deg) scale(1); }
+      25%  { top: 25%; left: 85%; transform: rotate(180deg) scale(1.2); }
+      50%  { top: 75%; left: 78%; transform: rotate(360deg) scale(0.95); }
+      75%  { top: 65%; left: 12%; transform: rotate(540deg) scale(1.15); }
+      100% { top: 10%; left: 8%; transform: rotate(720deg) scale(1); }
+    }
+
+    .window {
+      width: 100%;
+      max-width: 760px;
+      background: var(--card-bg);
+      border: 2.5px solid var(--border-pink);
+      border-radius: 22px;
+      box-shadow: 5px 5px 0px var(--soft-pink);
+      overflow: hidden;
+      height: fit-content;
+    }
+
+    .top-bar {
+      background: linear-gradient(90deg, #ffc2dc, #ffe0ed);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8f5670;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background: #ffffff;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+
+    .content { padding: 28px; }
+    header { text-align: center; margin-bottom: 18px; }
+    h1 { margin: 0; font-size: 32px; color: var(--accent-pink); text-shadow: 2px 2px 0px #ffe6f0; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 20px 0 28px 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      color: var(--accent-pink);
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      box-shadow: 2px 2px 0px var(--soft-pink);
+      display: inline-block;
+    }
+
+    .nav-link:hover {
+      transform: scale(1.13);
+      background: var(--soft-pink);
+      color: #6e3b52;
+    }
+
+    .nav-link.active {
+      background: var(--accent-pink);
+      color: #ffffff;
+    }
+
+    /* Poster Grid (Poster + Button Only) */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 22px;
+    }
+
+    .poster-card {
+      background: #ffffff;
+      border: 2px dashed var(--border-pink);
+      border-radius: 18px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .poster-card img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1.5px solid var(--soft-pink);
+      background-color: #fff2f7;
+    }
+
+    /* Pastel Pink & White Watch Button */
+    .watch-btn {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      background: #ffd6e7;
+      color: #ffffff;
+      text-shadow: 0px 1px 2px rgba(180, 100, 135, 0.45);
+      border: 2px solid #ffc2dc;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .watch-btn:hover {
+      transform: scale(1.08);
+      background: #f49ac1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #b07d93;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-sparkle">˚⟡˖ ࣪</div>
+
+  <div class="window">
+    <div class="top-bar">
+      <span>✿ tv shows</span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="content">
+      <header>
+        <h1>tv shows</h1>
+      </header>
+
+      <nav>
+        <a href="index.html" class="nav-link">home</a>
+        <a href="movies.html" class="nav-link">movies</a>
+        <a href="shows.html" class="nav-link active">tv shows</a>
+      </nav>
+
+      <!-- TV SHOW POSTERS GRID -->
+      <div class="poster-grid">
+
+        <!-- SHOW SLOT 1 -->
+        <div class="poster-card">
+          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="tv show poster">
+          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
+        </div>
+
+        <!-- SHOW SLOT 2 -->
+        <div class="poster-card">
+          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="tv show poster">
+          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
+        </div>
+
+        <!-- SHOW SLOT 3 -->
+        <div class="poster-card">
+          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="tv show poster">
+          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
+        </div>
+
+        <!-- SHOW SLOT 4 -->
+        <div class="poster-card">
+          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="tv show poster">
+          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
+        </div>
+
+      </div>
+
+      <footer>
+        made with ♡ and lots of pink pixels • 2026
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
