@@ -17,7 +17,7 @@
 
     body {
       margin: 0;
-      padding: 24px;
+      padding: 28px;
       font-family: 'Fredoka', sans-serif;
       color: var(--text-color);
       background-color: var(--bg-pink);
@@ -30,64 +30,88 @@
       overflow-x: hidden;
     }
 
-    .floating-sparkle {
+    .floater {
       position: fixed;
-      font-size: 24px;
-      color: #f49ac1;
-      pointer-events: none;
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 2px solid #ffc2dc;
+      box-shadow: 0 4px 10px rgba(244, 154, 193, 0.35);
+      cursor: pointer;
       z-index: 999;
-      animation: floatAround 16s ease-in-out infinite;
+      user-select: none;
+      transition: transform 0.15s ease;
     }
 
-    @keyframes floatAround {
-      0%   { top: 10%; left: 8%; transform: rotate(0deg) scale(1); }
-      25%  { top: 25%; left: 85%; transform: rotate(180deg) scale(1.2); }
-      50%  { top: 75%; left: 78%; transform: rotate(360deg) scale(0.95); }
-      75%  { top: 65%; left: 12%; transform: rotate(540deg) scale(1.15); }
-      100% { top: 10%; left: 8%; transform: rotate(720deg) scale(1); }
+    .floater:hover { transform: scale(1.15); }
+    .floater.following { z-index: 1001; box-shadow: 0 6px 16px rgba(244, 154, 193, 0.65); }
+
+    .f1 { animation: floatOne 15s ease-in-out infinite; }
+    .f2 { animation: floatTwo 18s ease-in-out infinite; }
+    .f3 { animation: floatThree 13s ease-in-out infinite; }
+
+    @keyframes floatOne {
+      0%   { top: 10%; left: 6%; transform: rotate(-6deg); }
+      33%  { top: 28%; left: 88%; transform: rotate(8deg); }
+      66%  { top: 76%; left: 82%; transform: rotate(-5deg); }
+      100% { top: 10%; left: 6%; transform: rotate(-6deg); }
+    }
+
+    @keyframes floatTwo {
+      0%   { top: 75%; left: 8%; transform: rotate(6deg); }
+      33%  { top: 16%; left: 84%; transform: rotate(-8deg); }
+      66%  { top: 68%; left: 15%; transform: rotate(5deg); }
+      100% { top: 75%; left: 8%; transform: rotate(6deg); }
+    }
+
+    @keyframes floatThree {
+      0%   { top: 45%; left: 90%; transform: rotate(0deg) scale(1); }
+      50%  { top: 14%; left: 12%; transform: rotate(12deg) scale(1.08); }
+      100% { top: 45%; left: 90%; transform: rotate(0deg) scale(1); }
     }
 
     .window {
       width: 100%;
-      max-width: 820px;
+      max-width: 960px;
       background: var(--card-bg);
       border: 2.5px solid var(--border-pink);
-      border-radius: 22px;
-      box-shadow: 5px 5px 0px var(--soft-pink);
+      border-radius: 24px;
+      box-shadow: 6px 6px 0px var(--soft-pink);
       overflow: hidden;
       height: fit-content;
     }
 
     .top-bar {
       background: linear-gradient(90deg, #ffc2dc, #ffe0ed);
-      padding: 10px 16px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #8f5670;
       font-family: 'VT323', monospace;
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .dots span {
       display: inline-block;
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
       background: #ffffff;
       border-radius: 50%;
-      margin-left: 5px;
+      margin-left: 6px;
     }
 
-    .content { padding: 28px; }
+    .content { padding: 34px; }
     header { text-align: center; margin-bottom: 18px; }
-    h1 { margin: 0; font-size: 32px; color: var(--accent-pink); text-shadow: 2px 2px 0px #ffe6f0; }
+    h1 { margin: 0; font-size: 36px; color: var(--accent-pink); text-shadow: 2px 2px 0px #ffe6f0; }
 
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
-      margin: 20px 0 22px 0;
+      gap: 16px;
+      margin: 22px 0 24px 0;
     }
 
     .nav-link {
@@ -95,10 +119,10 @@
       background: #ffffff;
       border: 2px solid var(--border-pink);
       color: var(--accent-pink);
-      padding: 9px 20px;
+      padding: 10px 24px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
       box-shadow: 2px 2px 0px var(--soft-pink);
       display: inline-block;
@@ -115,49 +139,41 @@
       color: #ffffff;
     }
 
-    /* Cute Search Bar */
     .search-wrap {
       display: flex;
       justify-content: center;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .search-input {
       width: 100%;
-      max-width: 360px;
-      padding: 10px 18px;
+      max-width: 400px;
+      padding: 11px 20px;
       border: 2px solid var(--border-pink);
       border-radius: 999px;
       background: #ffffff;
       font-family: 'Fredoka', sans-serif;
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--text-color);
       outline: none;
       box-shadow: 3px 3px 0px var(--soft-pink);
       transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .search-input::placeholder {
-      color: #c996ad;
-    }
+    .search-input::placeholder { color: #c996ad; }
+    .search-input:focus { transform: scale(1.03); border-color: var(--accent-pink); }
 
-    .search-input:focus {
-      transform: scale(1.03);
-      border-color: var(--accent-pink);
-    }
-
-    /* Poster Grid */
     .poster-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 22px;
     }
 
     .poster-card {
       background: #ffffff;
       border: 2px dashed var(--border-pink);
       border-radius: 18px;
-      padding: 12px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -166,7 +182,7 @@
     }
 
     .movie-title {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text-color);
       text-align: center;
@@ -193,10 +209,10 @@
       color: #ffffff;
       text-shadow: 0px 1px 2px rgba(180, 100, 135, 0.45);
       border: 2px solid #ffc2dc;
-      padding: 8px 12px;
+      padding: 9px 12px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 14.5px;
       transition: transform 0.2s ease, background-color 0.2s ease;
     }
 
@@ -216,14 +232,16 @@
     footer {
       text-align: center;
       margin-top: 28px;
-      font-size: 13px;
+      font-size: 13.5px;
       color: #b07d93;
     }
   </style>
 </head>
 <body>
 
-  <div class="floating-sparkle">˚⟡˖ ࣪</div>
+  <img src="https://pinimg.com" class="floater f1" title="click me to follow!">
+  <img src="https://pinimg.com" class="floater f2" title="click me to follow!">
+  <img src="https://pinimg.com" class="floater f3" title="click me to follow!">
 
   <div class="window">
     <div class="top-bar">
@@ -242,12 +260,10 @@
         <a href="shows.html" class="nav-link active">tv shows</a>
       </nav>
 
-      <!-- Search Bar -->
       <div class="search-wrap">
         <input type="text" id="searchInput" class="search-input" placeholder="search a tv show... ˚⟡˖ ࣪">
       </div>
 
-      <!-- Posters automatically appear here -->
       <div class="poster-grid" id="grid"></div>
       <p class="no-results" id="noResults">no tv shows found matching that name ♡</p>
 
@@ -262,10 +278,8 @@
   <!-- ========================================================= -->
   <script>
     const myShows = [
-      { title: "Nana", poster: "https://i.pinimg.com/1200x/9c/b6/a5/9cb6a53c3121c5471c515bff4dc78113.jpg", link: "https://archive.org/details/nana.-s-01-e-04_202508/NANA.S01E01.mkv" },
-      { title: "TV Show Name 2", poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
-      { title: "TV Show Name 3", poster: "PASTE_POSTER_LINK_3", link: "PASTE_WATCH_LINK_3" },
-      // To add more, copy a line above and paste it right here!
+     { title: "Nana", poster: "https://i.pinimg.com/1200x/9c/b6/a5/9cb6a53c3121c5471c515bff4dc78113.jpg", link: "https://archive.org/details/nana.-s-01-e-04_202508/NANA.S01E01.mkv" },
+     { title: "TV Show Name 2", poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
     ];
 
     // Do not touch anything below this line!
@@ -298,7 +312,36 @@
       const filtered = myShows.filter(s => s.title.toLowerCase().includes(query));
       renderCards(filtered);
     });
+
+    // Click-to-Follow Cursor Script
+    let activeFollower = null;
+    document.querySelectorAll('.floater').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (activeFollower === img) {
+          img.classList.remove('following');
+          img.style.animation = '';
+          activeFollower = null;
+        } else {
+          if (activeFollower) {
+            activeFollower.classList.remove('following');
+            activeFollower.style.animation = '';
+          }
+          activeFollower = img;
+          img.classList.add('following');
+          img.style.animation = 'none';
+        }
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (activeFollower) {
+        activeFollower.style.left = (e.clientX + 12) + 'px';
+        activeFollower.style.top = (e.clientY + 12) + 'px';
+      }
+    });
   </script>
 
 </body>
 </html>
+
