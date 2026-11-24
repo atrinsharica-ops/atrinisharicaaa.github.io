@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rins comfort zone</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --bg-pink: #fff2f7;
+      --card-bg: #fffafc;
+      --accent-pink: #f49ac1;
+      --soft-pink: #ffd6e7;
+      --text-color: #7d4e63;
+      --border-pink: #ffc2dc;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-pink); }
+    ::-webkit-scrollbar-thumb { background: var(--border-pink); border-radius: 10px; }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: 'Fredoka', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-pink);
+      background-image: radial-gradient(#ffd6e7 1.5px, transparent 1.5px), radial-gradient(#ffd6e7 1.5px, #fff2f7 1.5px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Floating & Spinning Sparkle */
+    .floating-sparkle {
+      position: fixed;
+      font-size: 24px;
+      color: #f49ac1;
+      pointer-events: none;
+      z-index: 999;
+      animation: floatAround 16s ease-in-out infinite;
+    }
+
+    @keyframes floatAround {
+      0%   { top: 10%; left: 8%; transform: rotate(0deg) scale(1); }
+      25%  { top: 25%; left: 85%; transform: rotate(180deg) scale(1.2); }
+      50%  { top: 75%; left: 78%; transform: rotate(360deg) scale(0.95); }
+      75%  { top: 65%; left: 12%; transform: rotate(540deg) scale(1.15); }
+      100% { top: 10%; left: 8%; transform: rotate(720deg) scale(1); }
+    }
+
+    .window {
+      width: 100%;
+      max-width: 720px;
+      background: var(--card-bg);
+      border: 2.5px solid var(--border-pink);
+      border-radius: 22px;
+      box-shadow: 5px 5px 0px var(--soft-pink);
+      overflow: hidden;
+      height: fit-content;
+    }
+
+    .top-bar {
+      background: linear-gradient(90deg, #ffc2dc, #ffe0ed);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #8f5670;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background: #ffffff;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+
+    .content {
+      padding: 28px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      color: var(--accent-pink);
+      text-shadow: 2px 2px 0px #ffe6f0;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      margin-top: 6px;
+      color: #9c6b81;
+    }
+
+    /* Navigation Buttons with Big Pop-Up Hover */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      background: #ffffff;
+      border: 2px solid var(--border-pink);
+      color: var(--accent-pink);
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      box-shadow: 2px 2px 0px var(--soft-pink);
+      display: inline-block;
+    }
+
+    .nav-link:hover {
+      transform: scale(1.13);
+      background: var(--soft-pink);
+      color: #6e3b52;
+    }
+
+    .nav-link.active {
+      background: var(--accent-pink);
+      color: #ffffff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .box {
+      background: #ffffff;
+      border: 2px dashed var(--border-pink);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .box h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--accent-pink);
+      border-bottom: 2px dotted var(--soft-pink);
+      padding-bottom: 6px;
+    }
+
+    /* Tally Suggestion Button */
+    .suggest-btn {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      background: #ffe6f0;
+      border: 2px solid var(--border-pink);
+      color: #7d4e63;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .suggest-btn:hover {
+      transform: scale(1.08);
+      background: var(--accent-pink);
+      color: #ffffff;
+    }
+
+    ul.fav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.fav-list li {
+      padding: 7px 0;
+      font-size: 14.5px;
+      border-bottom: 1px dashed #fff0f6;
+    }
+
+    ul.fav-list li:last-child {
+      border-bottom: none;
+    }
+
+    ul.fav-list li::before {
+      content: "♡ ";
+      color: var(--accent-pink);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 26px;
+      font-size: 13px;
+      color: #b07d93;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Emoji Across Screen -->
+  <div class="floating-sparkle">˚⟡˖ ࣪</div>
+
+  <div class="window">
+    <div class="top-bar">
+      <span>✿ rins comfort zone</span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="content">
+      <header>
+        <h1>rins comfort zone</h1>
+        <p class="subtitle">enjoy ♡</p>
+      </header>
+
+      <nav>
+        <a href="index.html" class="nav-link active">home</a>
+        <a href="movies.html" class="nav-link">movies</a>
+        <a href="shows.html" class="nav-link">tv shows</a>
+      </nav>
+
+      <div class="grid">
+        <!-- UPDATES CORNER -->
+        <div class="box">
+          <h2>updates</h2>
+          <p>More movies and TV shows will be added soon! Don't forget to submit your suggestions ˚⟡˖ ࣪</p>
+          <p style="font-size: 14px; margin-bottom: 4px;">If you would like to suggest a movie or TV show, click below:</p>
+          <a href="https://tally.so/r/Qo7yXG" target="_blank" class="suggest-btn">submit a suggestion ✧</a>
+        </div>
+
+        <!-- MY 4 FAVORITES -->
+        <div class="box">
+          <h2>my 4 favorites</h2>
+          <ul class="fav-list">
+            <li><strong>Foxfire</strong> (1996)</li>
+            <li><strong>The Craft</strong> (1996)</li>
+            <li><strong>Suicide Room</strong> (2011)</li>
+            <li><strong>Bidad / Outcry</strong> (2025)</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        made with ♡ and lots of pink pixels • 2026
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
