@@ -49,7 +49,7 @@
 
     .window {
       width: 100%;
-      max-width: 760px;
+      max-width: 820px;
       background: var(--card-bg);
       border: 2.5px solid var(--border-pink);
       border-radius: 22px;
@@ -115,11 +115,10 @@
       color: #ffffff;
     }
 
-    /* Poster Grid (Poster + Button Only) */
     .poster-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
     }
 
     .poster-card {
@@ -142,7 +141,6 @@
       background-color: #fff2f7;
     }
 
-    /* Pastel Pink & White Watch Button */
     .watch-btn {
       display: block;
       width: 100%;
@@ -194,39 +192,37 @@
         <a href="shows.html" class="nav-link">tv shows</a>
       </nav>
 
-      <!-- MOVIE POSTERS GRID -->
-      <div class="poster-grid">
-
-        <!-- MOVIE SLOT 1 -->
-        <div class="poster-card">
-          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="movie poster">
-          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
-        </div>
-
-        <!-- MOVIE SLOT 2 -->
-        <div class="poster-card">
-          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="movie poster">
-          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
-        </div>
-
-        <!-- MOVIE SLOT 3 -->
-        <div class="poster-card">
-          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="movie poster">
-          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
-        </div>
-
-        <!-- MOVIE SLOT 4 -->
-        <div class="poster-card">
-          <img src="PASTE_POSTER_IMAGE_LINK_HERE" alt="movie poster">
-          <a href="PASTE_YOUR_WATCH_LINK_HERE" target="_blank" class="watch-btn">click to watch</a>
-        </div>
-
-      </div>
+      <!-- Posters automatically appear here -->
+      <div class="poster-grid" id="grid"></div>
 
       <footer>
         made with ♡ and lots of pink pixels • 2026
       </footer>
     </div>
   </div>
+
+  <!-- ========================================================= -->
+  <!--        YOUR EASY MOVIE LIST (EDIT ONLY THIS PART!)        -->
+  <!-- ========================================================= -->
+  <script>
+    const myMovies = [
+      { poster: "PASTE_POSTER_LINK_1", link: "PASTE_WATCH_LINK_1" },
+      { poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
+      { poster: "PASTE_POSTER_LINK_3", link: "PASTE_WATCH_LINK_3" },
+      // To add more, copy a line above and paste it right here!
+    ];
+
+    // Do not touch anything below this line!
+    const grid = document.getElementById("grid");
+    myMovies.forEach(item => {
+      grid.innerHTML += `
+        <div class="poster-card">
+          <img src="${item.poster}" alt="poster">
+          <a href="${item.link}" target="_blank" class="watch-btn">click to watch</a>
+        </div>
+      `;
+    });
+  </script>
+
 </body>
 </html>
