@@ -87,7 +87,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 14px;
-      margin: 20px 0 28px 0;
+      margin: 20px 0 22px 0;
     }
 
     .nav-link {
@@ -115,9 +115,41 @@
       color: #ffffff;
     }
 
+    /* Cute Search Bar */
+    .search-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .search-input {
+      width: 100%;
+      max-width: 360px;
+      padding: 10px 18px;
+      border: 2px solid var(--border-pink);
+      border-radius: 999px;
+      background: #ffffff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14.5px;
+      color: var(--text-color);
+      outline: none;
+      box-shadow: 3px 3px 0px var(--soft-pink);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .search-input::placeholder {
+      color: #c996ad;
+    }
+
+    .search-input:focus {
+      transform: scale(1.03);
+      border-color: var(--accent-pink);
+    }
+
+    /* Poster Grid */
     .poster-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
       gap: 20px;
     }
 
@@ -129,7 +161,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .movie-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-color);
+      text-align: center;
+      line-height: 1.25;
+      margin: 0;
     }
 
     .poster-card img {
@@ -163,6 +205,14 @@
       background: #f49ac1;
     }
 
+    .no-results {
+      text-align: center;
+      color: #b07d93;
+      font-size: 15px;
+      display: none;
+      margin-top: 10px;
+    }
+
     footer {
       text-align: center;
       margin-top: 28px;
@@ -192,8 +242,14 @@
         <a href="shows.html" class="nav-link">tv shows</a>
       </nav>
 
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="search a movie... ˚⟡˖ ࣪">
+      </div>
+
       <!-- Posters automatically appear here -->
       <div class="poster-grid" id="grid"></div>
+      <p class="no-results" id="noResults">no movies found matching that name ♡</p>
 
       <footer>
         made with ♡ and lots of pink pixels • 2026
@@ -206,21 +262,41 @@
   <!-- ========================================================= -->
   <script>
     const myMovies = [
-      { poster: "PASTE_POSTER_LINK_1", link: "PASTE_WATCH_LINK_1" },
-      { poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
-      { poster: "PASTE_POSTER_LINK_3", link: "PASTE_WATCH_LINK_3" },
+      { title: "Foxfire (1996)", poster: "PASTE_POSTER_LINK_1", link: "PASTE_WATCH_LINK_1" },
+      { title: "The Craft (1996)", poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
+      { title: "Suicide Room (2011)", poster: "PASTE_POSTER_LINK_3", link: "PASTE_WATCH_LINK_3" },
       // To add more, copy a line above and paste it right here!
     ];
 
     // Do not touch anything below this line!
     const grid = document.getElementById("grid");
-    myMovies.forEach(item => {
-      grid.innerHTML += `
-        <div class="poster-card">
-          <img src="${item.poster}" alt="poster">
-          <a href="${item.link}" target="_blank" class="watch-btn">click to watch</a>
-        </div>
-      `;
+    const searchInput = document.getElementById("searchInput");
+    const noResults = document.getElementById("noResults");
+
+    function renderCards(list) {
+      grid.innerHTML = "";
+      if (list.length === 0) {
+        noResults.style.display = "block";
+        return;
+      }
+      noResults.style.display = "none";
+      list.forEach(item => {
+        grid.innerHTML += `
+          <div class="poster-card">
+            <p class="movie-title">${item.title}</p>
+            <img src="${item.poster}" alt="${item.title}">
+            <a href="${item.link}" target="_blank" class="watch-btn">click to watch</a>
+          </div>
+        `;
+      });
+    }
+
+    renderCards(myMovies);
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = myMovies.filter(m => m.title.toLowerCase().includes(query));
+      renderCards(filtered);
     });
   </script>
 
