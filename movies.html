@@ -277,13 +277,19 @@
   <!--        YOUR EASY MOVIE LIST (EDIT ONLY THIS PART!)        -->
   <!-- ========================================================= -->
     <script>
-    const myMovies = [
-      { title: "Eternal Sunshine of the Spotless Mind", poster: "https://i.pinimg.com/736x/c2/0a/37/c20a37df16c16f739ce74e4f3c0d2644.jpg", link: "https://archive.org/details/eternal-sunshine-of-the-spotless-mind-2004_202510" },
-      { title: "Marie Antoinette", poster: "https://i.pinimg.com/736x/4d/f7/b2/4df7b28df5be3986eeac0ba34cf66115.jpg", link: "https://www.febbox.com/share/wAeUcFR8" },
-      { title: "Spirited Away", poster: "https://i.pinimg.com/736x/fa/74/23/fa7423cd5a305af07759c11a357b6f35.jpg", link: "https://dn721600.ca.archive.org/0/items/the-cat-returns_202508/All_Movies/Spirited%20Away%20%282001%29.mp4" },
-      { title: "The Shining", poster: "https://i.pinimg.com/736x/97/5f/6c/975f6c794f1290cbc26e8def8aaa4188.jpg", link: "https://www.febbox.com/share/f46wW0h5" }
-      { title: "kiki’s delivery service", poster: "https://i.pinimg.com/736x/68/69/83/6869839a23d013af97e96e16df5b4ca5.jpg", link: "https://archive.org/details/the-cat-returns_202508/All_Movies/Kiki's+Delivery+Service+(1989).avi" },
+        const myMovies = [
+      { title: "Eternal Sunshine of the Spotless Mind", poster: "https://pinimg.com", link: "https://archive.org" },
+      { title: "Marie Antoinette", poster: "https://pinimg.com", link: "https://febbox.com" },
+      { title: "Spirited Away", poster: "https://pinimg.com", link: "https://archive.org" },
+      { title: "The Shining", poster: "https://pinimg.com", link: "https://febbox.com" },
+      { title: "kiki’s delivery service", poster: "https://pinimg.com", link: "https://archive.org" },
+      { title: "Red, White & Royal Blue", poster: "https://i.pinimg.com/736x/f4/ba/a4/f4baa4fd854be349a954c3249e9b45ab.jpg", link: "https://www.bilibili.com/en/video/BV1bA3Y6zE2p/?spm_id_from=333.788.recommend_more_video.0&trackid=web_related_0.router-related-2589621-4d422.1791691453666.755" },
+      { title: "All of Harry Potter", poster: "https://i.pinimg.com/736x/b9/67/b0/b967b05ac8dbb0569c3663abdcc3c8bc.jpg", link: "https://www.febbox.com/share/ADa6mr3W?parent_id=29894555" },
+      { title: "Speak", poster: "https://i.pinimg.com/736x/1f/86/f1/1f86f1886208d0a4d56747d116b1fe36.jpg", link: "https://www.febbox.com/share/BvMZ1KVU" },
+      { title: "Mysterious Skin", poster: "https://i.pinimg.com/736x/db/09/79/db0979e9a21639028e40f5e3b315dd72.jpg", link: "https://www.febbox.com/share/UPfY73LV" },
+      { title: "Uptown Girls", poster: "https://i.pinimg.com/736x/0f/c7/ad/0fc7ad14306ba16568c1f247aa2c43b9.jpg", link: "https://www.febbox.com/share/0NY9YL2r" },
     ];
+
     const grid = document.getElementById("grid");
     const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
