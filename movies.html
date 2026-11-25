@@ -239,9 +239,9 @@
 </head>
 <body>
 
-  <img src="https://i.pinimg.com/originals/50/c7/03/50c7037b50fdb9b7741a6b0c5319c6e3.gif" class="floater f1" title="click me to follow!">
-  <img src="https://i.pinimg.com/originals/e2/41/48/e241483bca30694392413216eee40ad1.gif" class="floater f2" title="click me to follow!">
-  <img src="https://i.pinimg.com/736x/18/59/5a/18595a367733f1e9c097396a44a8bcb8.jpg" class="floater f3" title="click me to follow!">
+  <img src="https://i.pinimg.com/736x/90/b8/3d/90b83dbf79e6be69f108709810962b23.jpg" class="floater f1" title="click me to follow!">
+  <img src="https://i.pinimg.com/736x/2e/44/18/2e4418873ead18414b3030176ddd0283.jpg" class="floater f2" title="click me to follow!">
+  <img src="https://i.pinimg.com/originals/37/e6/54/37e6546555565309406876ec766d5b05.gif" class="floater f3" title="click me to follow!">
 
   <div class="window">
     <div class="top-bar">
@@ -261,7 +261,7 @@
       </nav>
 
       <div class="search-wrap">
-        <input type="search" id="movieSearchBox" autocomplete="off" class="search-input" placeholder="search a movie... ˚⟡˖ ࣪">
+        <input type="text" id="searchInput" class="search-input" placeholder="search a movie... ˚⟡˖ ࣪">
       </div>
 
       <div class="poster-grid" id="grid"></div>
@@ -276,15 +276,15 @@
   <!-- ========================================================= -->
   <!--        YOUR EASY MOVIE LIST (EDIT ONLY THIS PART!)        -->
   <!-- ========================================================= -->
-    <script>
+  <script>
     const myMovies = [
-      { title: "Eternal Sunshine of the Spotless Mind", poster: "https://pinimg.com", link: "https://archive.org" },
-      { title: "Marie Antoinette", poster: "https://pinimg.com", link: "https://febbox.com" },
-      { title: "Spirited Away", poster: "https://pinimg.com", link: "https://archive.org" },
-      { title: "The Shining", poster: "https://pinimg.com", link: "https://febbox.com" }
+      { title: "Foxfire (1996)", poster: "PASTE_POSTER_LINK_1", link: "PASTE_WATCH_LINK_1" },
+      { title: "The Craft (1996)", poster: "PASTE_POSTER_LINK_2", link: "PASTE_WATCH_LINK_2" },
+      { title: "Suicide Room (2011)", poster: "PASTE_POSTER_LINK_3", link: "PASTE_WATCH_LINK_3" },
     ];
 
-        const grid = document.getElementById("grid");
+    // Do not touch anything below this line!
+    const grid = document.getElementById("grid");
     const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
 
@@ -314,6 +314,7 @@
       renderCards(filtered);
     });
 
+    // Click-to-Follow Cursor Script
     let activeFollower = null;
     document.querySelectorAll('.floater').forEach(img => {
       img.addEventListener('click', (e) => {
@@ -337,9 +338,3 @@
     document.addEventListener('mousemove', (e) => {
       if (activeFollower) {
         activeFollower.style.left = (e.clientX + 12) + 'px';
-        activeFollower.style.top = (e.clientY + 12) + 'px';
-      }
-    });
-  </script>
-</body>
-</html>
