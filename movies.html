@@ -239,9 +239,9 @@
 </head>
 <body>
 
-  <img src="https://pinimg.com" class="floater f1" title="click me to follow!">
-  <img src="https://pinimg.com" class="floater f2" title="click me to follow!">
-  <img src="https://pinimg.com" class="floater f3" title="click me to follow!">
+  <img src="https://i.pinimg.com/736x/90/b8/3d/90b83dbf79e6be69f108709810962b23.jpg" class="floater f1" title="click me to follow!">
+  <img src="https://i.pinimg.com/736x/2e/44/18/2e4418873ead18414b3030176ddd0283.jpg" class="floater f2" title="click me to follow!">
+  <img src="https://i.pinimg.com/originals/37/e6/54/37e6546555565309406876ec766d5b05.gif" class="floater f3" title="click me to follow!">
 
   <div class="window">
     <div class="top-bar">
@@ -261,7 +261,7 @@
       </nav>
 
       <div class="search-wrap">
-        <input type="search" id="movieSearchBox" autocomplete="off" class="search-input" placeholder="search a movie... ˚⟡˖ ࣪">
+        <input type="text" id="searchInput" class="search-input" placeholder="search a movie... ˚⟡˖ ࣪">
       </div>
 
       <div class="poster-grid" id="grid"></div>
@@ -276,19 +276,16 @@
   <!-- ========================================================= -->
   <!--        YOUR EASY MOVIE LIST (EDIT ONLY THIS PART!)        -->
   <!-- ========================================================= -->
-  <script>
+    <script>
     const myMovies = [
       { title: "Eternal Sunshine of the Spotless Mind", poster: "https://pinimg.com", link: "https://archive.org" },
       { title: "Marie Antoinette", poster: "https://pinimg.com", link: "https://febbox.com" },
       { title: "Spirited Away", poster: "https://pinimg.com", link: "https://archive.org" },
       { title: "The Shining", poster: "https://pinimg.com", link: "https://febbox.com" }
     ];
-
     const grid = document.getElementById("grid");
-    const searchInput = document.getElementById("movieSearchBox");
+    const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
-
-    searchInput.value = "";
 
     function renderCards(list) {
       grid.innerHTML = "";
@@ -323,3 +320,26 @@
         if (activeFollower === img) {
           img.classList.remove('following');
           img.style.animation = '';
+          activeFollower = null;
+        } else {
+          if (activeFollower) {
+            activeFollower.classList.remove('following');
+            activeFollower.style.animation = '';
+          }
+          activeFollower = img;
+          img.classList.add('following');
+          img.style.animation = 'none';
+        }
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (activeFollower) {
+        activeFollower.style.left = (e.clientX + 12) + 'px';
+        activeFollower.style.top = (e.clientY + 12) + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
+
