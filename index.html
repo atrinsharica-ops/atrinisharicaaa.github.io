@@ -34,27 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Corner Glitter & Sparkles (Stays around outer edges) */
-    .sparkle-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .sp {
-      position: absolute;
-      color: #f49ac1;
-      opacity: 0.55;
-      animation: twinkleFloat 7s ease-in-out infinite;
-    }
-
-    @keyframes twinkleFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg) scale(0.9); opacity: 0.35; }
-      50% { transform: translateY(-16px) rotate(25deg) scale(1.2); opacity: 0.85; }
-    }
-
     /* Floating Cuties (Click to follow cursor!) */
     .floater {
       position: fixed;
@@ -70,8 +49,15 @@
       transition: transform 0.15s ease;
     }
 
-    .floater:hover { transform: scale(1.15); }
-    .floater.following { pointer-events: auto; z-index: 1001; box-shadow: 0 6px 16px rgba(244, 154, 193, 0.65); }
+    .floater:hover {
+      transform: scale(1.15);
+    }
+
+    .floater.following {
+      pointer-events: auto;
+      z-index: 1001;
+      box-shadow: 0 6px 16px rgba(244, 154, 193, 0.65);
+    }
 
     .f1 { animation: floatOne 15s ease-in-out infinite; }
     .f2 { animation: floatTwo 18s ease-in-out infinite; }
@@ -97,9 +83,8 @@
       100% { top: 45%; left: 90%; transform: rotate(0deg) scale(1); }
     }
 
+    /* Bigger Window to Fit Screen Better */
     .window {
-      position: relative;
-      z-index: 10;
       width: 100%;
       max-width: 960px;
       background: var(--card-bg);
@@ -131,72 +116,18 @@
     }
 
     .content {
-      padding: 30px 34px 34px 34px;
-      position: relative;
+      padding: 34px;
     }
 
-    /* Creator's Account Corner Badge */
-    .creator-corner {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 10px;
-    }
-
-    .creator-card-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      background: #ffffff;
-      border: 2px dashed var(--border-pink);
-      border-radius: 999px;
-      padding: 6px 16px 6px 8px;
-      color: var(--text-color);
-      box-shadow: 3px 3px 0px var(--soft-pink);
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    .creator-card-link:hover {
-      transform: scale(1.06);
-      background: #fff0f6;
-    }
-
-    .creator-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid var(--accent-pink);
-    }
-
-    .creator-info {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .creator-tag {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--accent-pink);
-      text-transform: lowercase;
-    }
-
-    .creator-name {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text-color);
-    }
-
-    /* Slightly Bigger Top Bubble Board for Your GIF */
+    /* Cute Top Bubble Board for Your GIF */
     .top-gif-bubble {
       width: fit-content;
-      max-width: 300px;
-      margin: 0 auto 22px auto;
+      max-width: 240px;
+      margin: 0 auto 20px auto;
       background: #ffffff;
       border: 2.5px dashed var(--border-pink);
-      border-radius: 24px;
-      padding: 12px;
+      border-radius: 22px;
+      padding: 10px;
       box-shadow: 4px 4px 0px var(--soft-pink);
       display: flex;
       justify-content: center;
@@ -205,8 +136,8 @@
 
     .top-gif-bubble img {
       max-width: 100%;
-      max-height: 185px;
-      border-radius: 16px;
+      max-height: 145px;
+      border-radius: 14px;
       display: block;
     }
 
@@ -232,7 +163,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 16px;
       margin: 24px 0;
     }
 
@@ -241,10 +172,10 @@
       background: #ffffff;
       border: 2px solid var(--border-pink);
       color: var(--accent-pink);
-      padding: 10px 22px;
+      padding: 10px 24px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 15.5px;
+      font-size: 16px;
       transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
       box-shadow: 2px 2px 0px var(--soft-pink);
       display: inline-block;
@@ -338,22 +269,10 @@
 </head>
 <body>
 
-  <!-- Floating Glitter & Sparkles in Corners -->
-  <div class="sparkle-layer">
-    <span class="sp" style="top:4%; left:3%; font-size:20px;">✦</span>
-    <span class="sp" style="top:14%; left:9%; font-size:14px; animation-delay:1s;">˚⟡˖ ࣪</span>
-    <span class="sp" style="top:6%; right:4%; font-size:22px; animation-delay:2s;">✧</span>
-    <span class="sp" style="top:18%; right:8%; font-size:15px; animation-delay:0.5s;">⋆˙⟡</span>
-    <span class="sp" style="bottom:8%; left:4%; font-size:22px; animation-delay:1.5s;">✧</span>
-    <span class="sp" style="bottom:16%; left:9%; font-size:16px; animation-delay:3s;">✦</span>
-    <span class="sp" style="bottom:6%; right:5%; font-size:20px; animation-delay:2.5s;">˚⟡˖ ࣪</span>
-    <span class="sp" style="bottom:18%; right:10%; font-size:15px; animation-delay:0.8s;">✦</span>
-  </div>
-
-  <!-- 3 Floating Cuties (Unchanged Links) -->
-  <img src="https://pinimg.com" class="floater f1" title="click me to follow!">
-  <img src="https://pinimg.com" class="floater f2" title="click me to follow!">
-  <img src="https://pinimg.com" class="floater f3" title="click me to follow!">
+  <!-- 3 Floating Cuties (Click one to make it follow your cursor!) -->
+  <img src="https://i.pinimg.com/736x/90/b8/3d/90b83dbf79e6be69f108709810962b23.jpg" class="floater f1" title="click me to follow!">
+  <img src="https://i.pinimg.com/736x/2e/44/18/2e4418873ead18414b3030176ddd0283.jpg" class="floater f2" title="click me to follow!">
+  <img src="https://i.pinimg.com/originals/37/e6/54/37e6546555565309406876ec766d5b05.gif" class="floater f3" title="click me to follow!">
 
   <div class="window">
     <div class="top-bar">
@@ -362,6 +281,77 @@
     </div>
 
     <div class="content">
-      <!-- Creator's Account Corner Link -->
-      <div class="creator-corner">
-        <a href="diary.html" class="creator-card-link">
+      <!-- Cute Top Bubble Board with GIF -->
+      <div class="top-gif-bubble">
+        <img src="https://i.pinimg.com/originals/73/02/ec/7302ecf9f762be523a600169cdfaa16e.gif" alt="cute gif">
+      </div>
+
+      <header>
+        <h1>Atrin's comfort zone</h1>
+        <p class="subtitle">enjoy ♡</p>
+      </header>
+
+      <nav>
+        <a href="index.html" class="nav-link active">home</a>
+        <a href="movies.html" class="nav-link">movies</a>
+        <a href="shows.html" class="nav-link">tv shows</a>
+      </nav>
+
+      <div class="grid">
+        <div class="box">
+          <h2>updates</h2>
+          <p>10+ movies and shows added!!! i will add more dww˚⟡˖ ࣪</p>
+          <p style="font-size: 14px; margin-bottom: 4px;">If you would like to suggest a movie or TV show, click below:</p>
+          <a href="https://tally.so/r/Qo7yXG" target="_blank" class="suggest-btn">submit a suggestion ✧</a>
+        </div>
+
+        <div class="box">
+          <h2>my 4 favorites</h2>
+          <ul class="fav-list">
+            <li><strong>Foxfire</strong> (1996)</li>
+            <li><strong>The Craft</strong> (1996)</li>
+            <li><strong>Suicide Room</strong> (2011)</li>
+            <li><strong>Bidad / Outcry</strong> (2025)</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        made with ♡ and lots of pink pixels • 2026
+      </footer>
+    </div>
+  </div>
+
+  <!-- Click-to-Follow Cursor Script -->
+  <script>
+    let activeFollower = null;
+
+    document.querySelectorAll('.floater').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (activeFollower === img) {
+          img.classList.remove('following');
+          img.style.animation = '';
+          activeFollower = null;
+        } else {
+          if (activeFollower) {
+            activeFollower.classList.remove('following');
+            activeFollower.style.animation = '';
+          }
+          activeFollower = img;
+          img.classList.add('following');
+          img.style.animation = 'none';
+        }
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (activeFollower) {
+        activeFollower.style.left = (e.clientX + 12) + 'px';
+        activeFollower.style.top = (e.clientY + 12) + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
+
